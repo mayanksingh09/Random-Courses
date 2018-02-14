@@ -325,11 +325,73 @@ class Employee:
     def __str__(self):
         return '{} - {}'.format(self.fullname(), self.email)
 
+    
+    # dunder method to add salaries of employees
+    def __add__(self, other):
+        return self.pay + other.pay
 
-emp_1 = Employee('A', 'B', 1234)
+    # dunder method to find length
+    def __len__(self):
+        return len(self.fullname())
+
+emp_1 = Employee('Mayank', 'Singh', 150000) # an instance of the class employee
+emp_2 = Employee('Hey', 'There', 20000)
 
 print(emp_1)
 
 print(repr(emp_1))
 print(str(emp_1)) # calling the special methods
+
+print(emp_1 + emp_2) # adds their salaries because of add dunder method
+
+
+print(len(emp_1)) # length of full name of employee 1
+
+
+
+## Property Decorators
+
+class Employee:
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+    
+    @property # now email can be accessed as an attribute instead of a method (w/o brackets)
+    def email(self):
+        return '{}.{}@email.com'.format(self.first, self.last)
+    
+    @property
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+    
+    @fullname.setter # can now set the full name like an attribute
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.first = first
+        self.last = last
+        
+    @fullname.deleter # delete the full name (sets the first name and last name as None)
+    def fullname(self):
+        print('Delete Name')
+        self.first = None
+        self.last = None
+        
+        
+emp_1 = Employee('John', 'Doe')
+
+emp_1.first = 'Jim' # email still stays the same with the old name
+
+print(emp_1.first)
+print(emp_1.email)
+print(emp_1.fullname)
+
+
+emp_1.fullname = 'Corey Schafer' # setting the full name as an attribute
+
+print(emp_1.first)
+print(emp_1.email)
+print(emp_1.fullname)
+
+del emp_1.fullname
+print(emp_1.fullname)
 
