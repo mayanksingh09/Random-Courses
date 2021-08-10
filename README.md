@@ -5,3 +5,5 @@ Working on git with this repos
 
 change made to update-branch
 created 2nd branch
+
+new line in new-branch
