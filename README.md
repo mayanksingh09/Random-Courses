@@ -9,3 +9,5 @@ created 2nd branch
 new line in new-branch
 
 new commit resolving conflictsh
+
+changes for rebasing
