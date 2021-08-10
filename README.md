@@ -7,3 +7,5 @@ change made to update-branch
 created 2nd branch
 
 new line in new-branch
+
+new commit resolving conflictsh
